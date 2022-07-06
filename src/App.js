@@ -1,9 +1,13 @@
 import React from 'react';
-import { Category } from './components/Category';
+import { ListOfCategories } from './components/ListOfCategories';
+import { GlobalStyle } from './GlobalStyles';
 
 const App = ()=>{
   return (
-    <Category />
+    <>
+      <GlobalStyle />
+      <ListOfCategories />
+    </>
   );
 }
 

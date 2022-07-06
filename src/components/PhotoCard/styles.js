@@ -1,3 +1,4 @@
+import { MdFavorite } from "react-icons/md";
 import styled from "styled-components";
 import { fadeIn } from "../../styles/animation";
 
@@ -34,4 +35,10 @@ export const Button = styled.button`
 
   }
 `
+
+export const LikeIcon = styled(MdFavorite)`
+  color:  #ff277a;
+  ${fadeIn({ time: '250ms', type: 'ease-in' })}
+`
+
 

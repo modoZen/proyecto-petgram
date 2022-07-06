@@ -13,3 +13,23 @@ const fadeInkeyframes = keyframes`
 
 export const fadeIn = ({time='1s',type='ease'} = {}) => 
 css`animation: ${time} ${fadeInkeyframes} ${type};`
+
+const bounceDownKeyframes = keyframes`
+  0%{
+    top: -70px;
+  }
+  25%{
+    top: 0;
+  }
+  40%{
+    top: 10px;
+  }
+  65%{
+    top: -3px
+  }
+  100%{
+    top: 0%;
+  }
+`
+export const bounceDown = ({time='1s',type='ease'} = {})=>
+css`animation: ${time} ${bounceDownKeyframes} ${type}`

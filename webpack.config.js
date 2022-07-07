@@ -3,14 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 /** @type {import('webpack').Configuration} */
 module.exports = {
   output:{
-    filename: 'app.js'
+    filename: 'app.js',
+    publicPath: '/',
   },
   plugins:[
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     }),
   ],
-  devtool: "source-map",
+  devServer: {
+    historyApiFallback: true,
+  },
   module:{
     rules:[
       {
@@ -30,5 +33,6 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  devtool: "source-map",
 }

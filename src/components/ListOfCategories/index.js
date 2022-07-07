@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Category } from '../Category'
+import { Category, CategorySkeleton } from '../Category'
 import { List, Item } from './styles'
 import { useCategoriesData } from '../../hooks/useCategoriesData'
-
-
 
 export const ListOfCategories = ()=>{
   const { categories, loading } = useCategoriesData();
@@ -26,7 +24,7 @@ export const ListOfCategories = ()=>{
     <List className={fixed?'fixed':''}>
       {
       loading?
-      <Item key='loading'><Category /></Item>:
+      [1,2,3,,4,5,6].map(category=><Item key={category}><CategorySkeleton /></Item>):
       categories.map(category=><Item key={category.id}><Category {...category} path={`/pet/${category.id}`} /></Item>)
       }
     </List>

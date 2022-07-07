@@ -10,6 +10,7 @@ module.exports = {
       template: 'public/index.html'
     }),
   ],
+  devtool: "source-map",
   module:{
     rules:[
       {

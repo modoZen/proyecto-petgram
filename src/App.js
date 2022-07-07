@@ -3,16 +3,25 @@ import { ListOfCategories } from './components/ListOfCategories';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { ListOfPhotoCards } from './components/ListOfPhotoCards';
 import { Logo } from './components/Logo'
+import { PhotoCardWithQuery } from './components/PhotoCardWithQuery';
 
 const App = ()=>{
+  const urlParams = new URLSearchParams(location.search);
+  const detailId = urlParams.get('detail');
   return (
     <>
-      <Logo />
       <GlobalStyle />
-      <ListOfCategories />
-      <ListOfPhotoCards categoryId={1} />
+      <Logo />
+      {
+        detailId?
+        <PhotoCardWithQuery id={detailId} />:
+        <>
+          <ListOfCategories />
+          <ListOfPhotoCards categoryId={1} />
+        </>
+      }
     </>
-  );
+  )
 }
 
 export { App }

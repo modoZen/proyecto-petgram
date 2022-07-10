@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { Logo } from './components/Logo'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -8,9 +8,11 @@ import { NavBar } from './components/NavBar';
 import { Favs } from './pages/Favs';
 import { NotRegisteredUser } from './pages/NotRegisteredUser';
 import { User } from './pages/User';
+import { useSelector } from 'react-redux';
 
 const App = ()=>{
-  const [isLogged, setIsLogged ] = useState(true);
+  // const [isLogged, setIsLogged ] = useState(true);
+  const isLogged = useSelector(state=>state.auth.isAuth)
 
   return (
     <>

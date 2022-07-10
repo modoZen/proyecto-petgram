@@ -8,12 +8,12 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    activaAuth: (state, action) => {
+    activateAuth: (state, action) => {
       state.isAuth = true;
     }
   }
 })
 
-export const { activaAuth } = authSlice.actions;
+export const { activateAuth } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

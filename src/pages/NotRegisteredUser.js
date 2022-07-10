@@ -1,5 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
+import { UserForm } from "../components/UseForm";
 import { activaAuth } from "../store/authReducer";
 
 export const NotRegisteredUser = ()=>{
@@ -9,9 +10,7 @@ export const NotRegisteredUser = ()=>{
   }
   return (
     <>
-      <form onSubmit={activateAuth}>
-        <button>Iniciar sesión</button>
-      </form>
+      <UserForm onSubmit={activateAuth} />
     </>
   )
 }

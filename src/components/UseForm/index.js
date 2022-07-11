@@ -8,7 +8,7 @@ const UserForm = ({ onSubmit, title, disabled, error })=>{
   const handlerSubtmit = (event) =>{
     event.preventDefault();
     onSubmit({email: email.value, password: password.value});
-  }
+  };
   
   return (
     <>
@@ -20,7 +20,6 @@ const UserForm = ({ onSubmit, title, disabled, error })=>{
       </Form>
       {error && <Error>{error}</Error>}
     </>
-
   )
 }
 

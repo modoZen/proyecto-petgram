@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  isAuth : false
+  isAuth : sessionStorage.getItem('token')
 }
 
 const authSlice = createSlice({
@@ -9,7 +9,8 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     activateAuth: (state, action) => {
-      state.isAuth = true;
+      sessionStorage.setItem('token', action.payload)
+      state.isAuth = action.payload;
     }
   }
 })

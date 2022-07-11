@@ -7,21 +7,27 @@ import { useLoginMutation } from "../hooks/useLoginMutation";
 
 export const NotRegisteredUser = ()=>{
   const dispath = useDispatch();
+
   const { registerMutation, mutationLoading, mutationError } = useRegisterMutation();
-  const { loginMutation, loginData, loginLoading, loginError } = useLoginMutation();
   const handlerRegister = ({email, password})=>{
     const input = { email, password };
     const variables = { input };
-    registerMutation({variables}).then(handlerAuth);
+    registerMutation({variables}).then(({data})=>{
+      const { signup } = data;
+      dispath(activateAuth(signup));
+    });
   };
+  const errorMsgRegister = mutationError && 'El usuario ya existe';
+  
+  const { loginMutation, loginLoading, loginError } = useLoginMutation();
   const handlerAuth = ({email, password})=>{
     const input = { email, password };
     const variables = { input };
-    loginMutation({variables}).then(()=>{
-      dispath(activateAuth());
+    loginMutation({variables}).then(({data})=>{
+      const {login} = data;
+      dispath(activateAuth(login));
     })
   };
-  const errorMsgRegister = mutationError && 'El usuario ya existe';
   const errorMsgLogin = loginError && 'La contraseña no es correcta o el usuario no existe';
 
   return (

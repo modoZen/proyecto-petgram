@@ -4,8 +4,7 @@ import { Layout } from "../components/Layout";
 import { ListOfCategories } from '../components/ListOfCategories';
 import { ListOfPhotoCards } from '../components/ListOfPhotoCards';
 
-
-export const Home = ()=>{
+const HomePage = ()=>{
   const params = useParams();
   const { id } = params;
   return (
@@ -18,3 +17,7 @@ export const Home = ()=>{
     </Layout>
   )
 }
+
+export const Home = React.memo(HomePage,(prevProps, props)=>{
+  return prevProps.id === props.id
+});

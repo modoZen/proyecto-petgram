@@ -11,10 +11,14 @@ const authSlice = createSlice({
     activateAuth: (state, action) => {
       sessionStorage.setItem('token', action.payload)
       state.isAuth = action.payload;
+    },
+    removeAuth: (state, action) =>{
+      sessionStorage.removeItem('token');
+      state.isAuth = false;
     }
   }
 })
 
-export const { activateAuth } = authSlice.actions;
+export const { activateAuth, removeAuth } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

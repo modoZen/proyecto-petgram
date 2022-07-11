@@ -8,18 +8,20 @@ import { Article, ImgWrapper, Img } from './styles'
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE}) =>{
+export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE, liked:likedServer}) =>{
   const [show, ref] = useNearScreen();
   const key = `key-${id}`;
-  const [liked, setLiked ] = useLocalStorage(key,false);
+  const [liked, setLiked ] = useLocalStorage(key,likedServer);
   const { mutation, mutationLoading, mutationError } = useMuationToogleLike();
   const handleFavClick = () =>{
-    !liked && mutation({
+    mutation({
       variables:{
         input:{id}
       }
+    }).then(({data})=>{
+      const { likePhoto : { liked } } = data;
+      setLiked(liked);
     })
-    setLiked(!liked)
   }
   return (
     <Article ref={ref}>

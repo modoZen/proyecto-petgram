@@ -1,6 +1,6 @@
 import React,{ lazy, Suspense} from 'react';
 import { GlobalStyle } from './styles/GlobalStyles';
-// import { Logo } from './components/Logo'
+import { Logo } from './components/Logo'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { Detail } from './pages/Detail';
